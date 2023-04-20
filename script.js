@@ -1,48 +1,137 @@
-let audioIN = { audio: true }; // audio is true, for recording
-navigator.mediaDevices.getUserMedia(audioIN) // access the permission for mic use
-let audioURLs = [];
+let audioIN = { audio: true };
+navigator.mediaDevices.getUserMedia(audioIN)
 
 .then(function (mediaStreamObj) {
-
+  
+  let audioURLs = [];
+  let fileIndex = 0;
   let dataArray = [];
+  let audioSrc;
+  let samplers = []; // for tone
 
-  // Connect the media stream to the first audio element returns the recorded audio via 'audio' tag
   let audio = document.querySelector('audio');
 
-  //new-browser/old-broswer handling
   if ("srcObject" in audio) {audio.srcObject = mediaStreamObj;}
   else {audio.src = window.URL.createObjectURL(mediaStreamObj);}
 
-  //retrieve html elements
-  let start = document.getElementById('btnStart');
-  let stop = document.getElementById('btnStop');
-  let playAudio = document.getElementById('audioPlay');
+  let recordButton = document.getElementById('btnStart');
+  let mixButton = document.getElementById('btnMix');
+  let clearButton = document.getElementById('stopMix');
 
-  //'MediaRecorder' API passing stream audio
   let mediaRecorder = new MediaRecorder(mediaStreamObj);
+  let isRecording = false;
 
-  //start, stop, and push data
-  start.addEventListener('click', function (ev) {mediaRecorder.start();})
-  stop.addEventListener('click', function (ev) {mediaRecorder.stop();});
-  mediaRecorder.ondataavailable = function (ev) {dataArray.push(ev.data);}
+  recordButton.addEventListener('click', function (ev) {
+    if (isRecording) {
+      //stop recording
+      mediaRecorder.stop();
+      isRecording = false;
+      recordButton.textContent = 'Start Recording'; //change button text
+    } else {
+      //start recording
+      dataArray = []; //empty data array to use again
+      mediaRecorder.start();
+      isRecording = true;
+      recordButton.textContent = 'Stop Recording'; //change button text
+    }
+  });
 
-  // Convert the audio data in to blob after stopping the recording
-  mediaRecorder.onstop = function (ev) {
-    let audioData = new Blob(dataArray,
-          { 'type': 'audio/mp3;' });
+//MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
+//MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
+mixButton.addEventListener('click', function (ev) {
 
-    dataArray = []; //empty data array to use again
-    let audioSrc = window.URL.createObjectURL(audioData); // Creating audio url with reference of created blob named 'audioData'
-    audioURLs.push(audioSrc); //store audio
-    playAudio.src = audioSrc; // Pass the audio url to the 2nd video tag
+  const reverb = new Tone.Reverb({
+    decay: 3,
+    wet: 0.9,
+  }).toDestination();
+  const filter = new Tone.AutoFilter(1).start();
+  const distortion = new Tone.Distortion(0.7);
+  const echo = new Tone.FeedbackDelay('2n', 0.7);
+  filter.connect(reverb);
+  distortion.connect(reverb);
+  echo.connect(reverb);
+  const synth = new Tone.Synth().toDestination();
+  const compNotes = [40, 45];
+
+  const eq = new Tone.EQ3({
+    low: -1, // the cut-off frequency of the low band, in decibels
+    mid: -5, // the cut-off frequency of the mid band, in decibels
+    high: -3 // the cut-off frequency of the high band, in decibels
+  });
+
+  // connect it to a sound source
+  eq.connect(reverb);
+
+  eq.low.value = -5; // decrease the level of the low frequencies
+  eq.mid.value = 0; // boost the level of the mid frequencies
+  eq.high.value = -6; // decrease the level of the high frequencies
+
+  const notes = ["C4", "D#4", "F#4", "A4"]; // replace with your desired notes
+
+  for (let i = 0; i < audioURLs.length; i++) {
+    const midiNote = i + 60; // start at MIDI note 60 (C4)
+    const urls = {};
+    urls[midiNote] = audioURLs[i];
+    const sampler = new Tone.Sampler({
+      urls: urls,
+      release: 1,
+      baseUrl: "",
+    }).connect(distortion);
+    samplers.push(sampler);
   }
 
-  audioURLs.forEach(url, index) => {
-    let audio = new Audio();
-    audio.src = url;
-    document.body.appendChild(audio);
+  Tone.Transport.scheduleRepeat((time) => {
+    const noteNames = samplers.map((sampler, i) => notes[i % notes.length]);
+    samplers.forEach((sampler, i) => {
+      const noteName = noteNames[i];
+      const duration = Tone.Time("4n") + Tone.Time(Math.random() * 0.1 + 4);
+      const attack = Tone.Time(Math.random() * 0.05);
+      const release = Tone.Time(Math.random() * 0.1 + 0.1);
+      sampler.triggerAttackRelease(noteName, duration, time + attack, 0.5 + release);
+    });
+  }, "2n");
+
+
+  Tone.Transport.start();
+
+});
+//MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
+//MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
+
+clearButton.addEventListener('click', function(ev) {
+  Tone.Transport.stop(Tone.now());
+  samplers.forEach((sampler) => {
+    sampler.dispose();
+  });
+  samplers = [];
+  audioURLs = [];
+  var list = document.getElementById('recordingList');
+  recordingList.innerHTML = '';
+})
+
+
+  mediaRecorder.ondataavailable = function (ev) {
+    dataArray.push(ev.data);
+  };
+
+  mediaRecorder.onstop = function (ev) {
+    let audioData = new Blob(dataArray,
+          { 'type': 'audio/wav;' });
+
+    dataArray = []; //empty data array to use again
+    audioSrc = window.URL.createObjectURL(audioData); // Creating audio url with reference of created blob named 'audioData'
+    audioURLs.push(audioSrc); //store audio
+    let filename = 'recording' + (audioURLs.length) + '.wav'; //create filename based on number of recordings
+    let li = document.createElement('li'); //create new list item
+    li.textContent = filename; //set list item text to filename
+    recordingList.appendChild(li); //add list item to recording list
   }
 
 })
 
-.catch(function (err) {console.log(err.name, err.message);}); //catch any errors
+
+.catch(function (err) {
+  console.log(err.name, err.message);
+});
+
+
