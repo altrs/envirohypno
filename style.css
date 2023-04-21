@@ -1,13 +1,3 @@
-#btnStart{
-	background-color: transparent;
-	border: solid;
-}
-
-#btnStart img{
-	width: 20px;
-	height: 20px;
-}
-
 .recorderBody{
   background-image: url('background.png');
   background-size: 100vw 300vh;
