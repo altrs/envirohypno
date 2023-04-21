@@ -1,0 +1,9 @@
+#btnStart{
+	background-color: transparent;
+	border: solid;
+}
+
+#btnStart img{
+	width: 20px;
+	height: 20px;
+}
