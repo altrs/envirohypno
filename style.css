@@ -7,3 +7,80 @@
 	width: 20px;
 	height: 20px;
 }
+
+.recorderBody{
+  background-image: url('background.png');
+  background-size: 100vw 200vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 20px;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item:last-child {
+  margin-right: 0;
+}
+
+.navbar-text {
+  font-family: "baskerville-display-pt", serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #517939;
+}
+
+
+.scroll-container {
+  width: 100vw ;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  margin: auto;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  background-color: #f1b643;
+  border-top: 2px solid #204f7f;
+  transform: translateX(-8px);
+  color: #204f7f;
+}
+
+.scroll-text {
+  white-space: nowrap;
+  animation: scrollText 33s infinite linear;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  position: absolute;
+  font-family: "baskerville-display-pt", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+@keyframes scrollText {
+  from   { transform: translateX(0%); }
+  to { transform: translateX(-50%); }
+}
+
+.recorderDiv{
+  background-image: url('recorder_background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: solid;
+  height: 500px;
+  width: 400px;
+  margin: auto;
+
+}

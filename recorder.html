@@ -3,36 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville">
+    <link rel="stylesheet" href="https://use.typekit.net/akx3pos.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
 
     <title>Index</title>
   </head>
-  <body>
+  <body class="recorderBody">
     
-    <header>
-      <h1>Recorder</h1>
-    </header>
+    <nav class="navbar">
+      <a href="index.html" style="transform: scale(.5);"><img src="home_logo.png"></a>
+      <a href="info.html" class="navbar-text"><u>INFO</u></a>
+    </nav>
 
-    <!--button for 'start recording'-->
-    <p>
-      <button id="btnStart"> <img src="ava2.png"> </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-      <button id="btnMix"> mix </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-      <button id="stopMix"> clear </button>
-      <!--button for 'stop recording'-->
-    </p>
+    <div class="recorderDiv"> <!--RECORDER DIV -->
 
-    <audio style="display:none" controls></audio>
-    <audio style="display:none" id="audioPlay" controls></audio>
+        <button id="btnStart"> <img src="ava2.png"> </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="btnMix"> mix </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="stopMix"> clear </button>
 
-    <div id="recordingList">
-      <ul id="list">
-        <!-- list items added dynamically -->
-      </ul>
+        <audio style="display:none" controls></audio>
+        <audio style="display:none" id="audioPlay" controls></audio>
+
+        <div id="recordingList">
+          <ul id="list">
+            <!-- list items added dynamically -->
+          </ul>
+        </div>
+
+  </div>
+
+    <div class="scroll-container">
+      <p class="scroll-text">EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS </p>
     </div>
+
+
 
     <script src="script.js"></script>
 
