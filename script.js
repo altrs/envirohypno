@@ -24,21 +24,24 @@ navigator.mediaDevices.getUserMedia(audioIN)
   recordButton.addEventListener('click', function (ev) {
     if (isRecording) {
       //stop recording
+      document.getElementById("myImg").setAttribute("src", "idle.gif");
       mediaRecorder.stop();
       isRecording = false;
-      recordButton.textContent = 'Start Recording'; //change button text
+      recordButton.textContent = 'RECORD!'; //change button text
     } else {
       //start recording
+      document.getElementById("myImg").setAttribute("src", "record.gif");
       dataArray = []; //empty data array to use again
       mediaRecorder.start();
       isRecording = true;
-      recordButton.textContent = 'Stop Recording'; //change button text
+      recordButton.textContent = 'STOP RECORDING!'; //change button text
     }
   });
 
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 mixButton.addEventListener('click', function (ev) {
+  document.getElementById("myImg").setAttribute("src", "mix.gif");
 
   const reverb = new Tone.Reverb({
     decay: 3,
@@ -99,6 +102,7 @@ mixButton.addEventListener('click', function (ev) {
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 
 clearButton.addEventListener('click', function(ev) {
+  document.getElementById("myImg").setAttribute("src", "idle.gif");
   Tone.Transport.stop(Tone.now());
   samplers.forEach((sampler) => {
     sampler.dispose();

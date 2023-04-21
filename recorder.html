@@ -24,7 +24,8 @@
 
         <div class="gifAndSamples">
           <div class="gif">
-            
+            <img id="myImg" src="idle.gif">
+            <!-- add gif dynamically -->
           </div>
             <div class="samples">
               <div id="recordingList">
@@ -35,11 +36,13 @@
             </div>
           </div>
 
-        <button id="btnStart"> record </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        <button id="btnMix"> mix </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        <button id="stopMix"> clear </button>
+        <div class="buttons">
+          <button style="background-color: #ac4e35; border: 2px solid #84ec81; color: #7ac378;" id="btnStart"> RECORD! </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style="background-color: #1c1e1a; border: 2px solid #66b2ff; color: #66b2ff;" id="btnMix"> MIX! </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style="background-color: #61847c; border: 2px solid #5f0303; color: #5f0303;" id="stopMix"> CLEAR! </button>
+        </div>
 
         <audio style="display:none" controls></audio>
         <audio style="display:none" id="audioPlay" controls></audio>
