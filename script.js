@@ -9,6 +9,16 @@ navigator.mediaDevices.getUserMedia(audioIN)
   let audioSrc;
   let samplers = []; // for tone
 
+  const randomWord = '';
+
+  var slider = document.getElementById("myRange");
+  var val = slider.value;
+
+  slider.oninput = function() {
+    valv = this.value;
+    console.log(val);
+  }
+
   let audio = document.querySelector('audio');
 
   if ("srcObject" in audio) {audio.srcObject = mediaStreamObj;}
@@ -122,10 +132,19 @@ clearButton.addEventListener('click', function(ev) {
     let audioData = new Blob(dataArray,
           { 'type': 'audio/wav;' });
 
+    fetch('words.txt')
+    .then(response => response.text())
+    .then(text => {
+      const lines = text.split('\n');
+      const randomIndex = Math.floor(Math.random() * lines.length);
+      randomWord = lines[randomIndex];
+    })
+    .catch(error => console.error(error));
+
     dataArray = []; //empty data array to use again
     audioSrc = window.URL.createObjectURL(audioData); // Creating audio url with reference of created blob named 'audioData'
     audioURLs.push(audioSrc); //store audio
-    let filename = 'recording' + (audioURLs.length) + '.wav'; //create filename based on number of recordings
+    let filename = randomWord + '.wav'; //create filename
     let li = document.createElement('li'); //create new list item
     li.textContent = filename; //set list item text to filename
     recordingList.appendChild(li); //add list item to recording list
