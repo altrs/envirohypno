@@ -11,14 +11,6 @@ navigator.mediaDevices.getUserMedia(audioIN)
 
   var randomWord = '';
 
-  var slider = document.getElementById("myRange");
-  var val = slider.value;
-
-  slider.oninput = function() {
-    valv = this.value;
-    console.log(val);
-  }
-
   let audio = document.querySelector('audio');
 
   if ("srcObject" in audio) {audio.srcObject = mediaStreamObj;}
@@ -27,6 +19,7 @@ navigator.mediaDevices.getUserMedia(audioIN)
   let recordButton = document.getElementById('btnStart');
   let mixButton = document.getElementById('btnMix');
   let clearButton = document.getElementById('stopMix');
+  const rateSlider = document.getElementById("rate-slider");
 
   let mediaRecorder = new MediaRecorder(mediaStreamObj);
   let isRecording = false;
@@ -54,7 +47,7 @@ mixButton.addEventListener('click', function (ev) {
   document.getElementById("myImg").setAttribute("src", "mix.gif");
 
   const reverb = new Tone.Reverb({
-    decay: 3,
+    decay: 50,
     wet: 0.9,
   }).toDestination();
   const filter = new Tone.AutoFilter(1).start();
@@ -104,10 +97,14 @@ mixButton.addEventListener('click', function (ev) {
     });
   }, "2n");
 
-
   Tone.Transport.start();
 
 });
+
+document.getElementById('myRange').addEventListener('input', e => {
+  Tone.Transport.bpm.rampTo(+e.target.value, 0.1)
+})
+
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 
@@ -129,9 +126,6 @@ clearButton.addEventListener('click', function(ev) {
   };
 
   mediaRecorder.onstop = function (ev) {
-    let audioData = new Blob(dataArray,
-          { 'type': 'audio/wav;' });
-
     fetch('words.txt')
     .then(response => response.text())
     .then(text => {
@@ -140,6 +134,9 @@ clearButton.addEventListener('click', function(ev) {
       randomWord = lines[randomIndex];
     })
     .catch(error => console.error(error));
+    
+    let audioData = new Blob(dataArray,
+          { 'type': 'audio/wav;' });
 
     dataArray = []; //empty data array to use again
     audioSrc = window.URL.createObjectURL(audioData); // Creating audio url with reference of created blob named 'audioData'
