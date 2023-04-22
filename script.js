@@ -9,7 +9,7 @@ navigator.mediaDevices.getUserMedia(audioIN)
   let audioSrc;
   let samplers = []; // for tone
 
-  const randomWord = '';
+  var randomWord = '';
 
   var slider = document.getElementById("myRange");
   var val = slider.value;
