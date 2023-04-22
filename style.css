@@ -116,6 +116,7 @@ li {
   	padding-top: 30px;
 	padding-left: 40px;
 	padding-right: 40px;
+  z-index: 100;
 }
 
 .buttons button{
