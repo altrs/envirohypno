@@ -101,9 +101,10 @@ mixButton.addEventListener('click', function (ev) {
 
 });
 
-document.getElementById('myRange').addEventListener('input', e => {
-  Tone.Transport.bpm.rampTo(+e.target.value, 0.1)
-})
+const slider = document.getElementById("myRange");
+slider.addEventListener("input", function() {
+  Tone.Transport.bpm.value = +this.value;
+});
 
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
 //MIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXERMIXER
@@ -134,7 +135,7 @@ clearButton.addEventListener('click', function(ev) {
       randomWord = lines[randomIndex];
     })
     .catch(error => console.error(error));
-    
+
     let audioData = new Blob(dataArray,
           { 'type': 'audio/wav;' });
 
