@@ -142,7 +142,7 @@ clearButton.addEventListener('click', function(ev) {
     dataArray = []; //empty data array to use again
     audioSrc = window.URL.createObjectURL(audioData); // Creating audio url with reference of created blob named 'audioData'
     audioURLs.push(audioSrc); //store audio
-    let filename = randomWord + '.wav'; //create filename
+    let filename = "X_" + randomWord + '.wav'; //create filename
     let li = document.createElement('li'); //create new list item
     li.textContent = filename; //set list item text to filename
     recordingList.appendChild(li); //add list item to recording list

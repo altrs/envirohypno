@@ -175,3 +175,41 @@ li {
 }
 
 
+
+#input-text{
+  display: block;
+  width: 399px;
+  height: 200px;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  font-size: 12px;
+  border: 1px solid;
+  font-family: Arial;
+}
+#input-text::placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: Arial;
+}
+#save-button{
+  display: block;
+  width: 400px;
+  margin: 0px auto;
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid;
+  background-color: #FFFFFF;
+}
+
+
+.info{
+  display: block;
+  width: 399px;
+  height: 200px;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  font-size: 12px;
+  border: 1px solid;
+  font-family: Arial;
+  padding: 10px;
+}
