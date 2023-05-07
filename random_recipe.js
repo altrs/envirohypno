@@ -14,8 +14,8 @@
       var selectedLines = '';
       for (var i = 0; i < 5; i++) {
         var randomIndex = Math.floor(Math.random() * lines.length);
-        selectedLines += lines[randomIndex] + '\n';
+        selectedLines += lines[randomIndex] + '<br>';
       }
-      randText.textContent = selectedLines;
+      randText.innerHTML = selectedLines;
     };
   });

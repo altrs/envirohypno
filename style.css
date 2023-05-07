@@ -212,6 +212,7 @@ li {
   border: 1px solid;
   font-family: Arial;
   padding: 10px;
+  text-align: center;
 }
 
 #tool-button:hover{
@@ -220,4 +221,7 @@ li {
 
 #generator:hover{
   border-width: 5px;
+}
+audio::-webkit-media-controls-panel {
+  background-color: #FFFFFF;
 }
