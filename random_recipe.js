@@ -6,7 +6,7 @@
     fetch('recipes.txt')
       .then(response => response.text())
       .then(text => {
-        lines = text.split('\n');
+        lines = text.split(/\r?\n/);
       })
       .catch(error => console.error(error));
 
