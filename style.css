@@ -213,3 +213,11 @@ li {
   font-family: Arial;
   padding: 10px;
 }
+
+#tool-button:hover{
+  background-color: #6ba847
+}
+
+#generator:hover{
+  border-width: 5px;
+}
