@@ -47,8 +47,8 @@ mixButton.addEventListener('click', function (ev) {
   document.getElementById("myImg").setAttribute("src", "mix.gif");
 
   const reverb = new Tone.Reverb({
-    decay: 50,
-    wet: 0.9,
+    decay: 30,
+    wet: 0.1,
   }).toDestination();
   const filter = new Tone.AutoFilter(1).start();
   const distortion = new Tone.Distortion(0.7);

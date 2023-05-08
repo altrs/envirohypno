@@ -233,6 +233,13 @@ audio::-webkit-media-controls-panel {
   color: blue;
   background-color: blue;
 }
+#ref, #ref:link, #ref:visited{
+  text-decoration: none;
+  color: red;
+}
+#ref:hover{
+  color: pink;
+}
 
 
 
