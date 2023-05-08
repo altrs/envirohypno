@@ -214,14 +214,27 @@ li {
   padding: 10px;
   text-align: center;
 }
-
-#tool-button:hover{
-  background-color: #6ba847
+#tool-button{
+  background-color: #afed9d;
 }
-
+#tool-button:hover{
+  background-color: #6ba847;
+}
 #generator:hover{
   border-width: 5px;
 }
 audio::-webkit-media-controls-panel {
   background-color: #FFFFFF;
 }
+#tracks:hover{
+  background-color: yellow;
+}
+#about:hover{
+  color: blue;
+  background-color: blue;
+}
+
+
+
+
+
