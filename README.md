@@ -28,7 +28,7 @@ https://aliceyuanzhang.com/decentralization.html <br>
 https://www.currentaffairs.org/2021/04/dance-dance-socialist-revolution <br>
 https://www.communitytechny.org/
 
-<br><br>
+<br>
 Some next steps:<br>
 -Connecting the website to a database and coding a minimal 'forum' type user experience so that people can share their sound recipes.<br>
 -Adding more random sound prompts to the info page<br>
