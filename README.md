@@ -12,4 +12,5 @@ Step 1: Choose a location you'd like to utalize in this creative process <br>
 Step 2: Record some sounds. It's generally best if there 3-10 secs long. <br>
 Step 3: Press 'MIX' Find somewhere comfortable within that area to relax. <br>
 Step 4: Listen closely to the repetition, maybe even lose yourself within it. <br>
-Step 5: Continue contributing to the recreation of our relationship with tech. <br><br>
+Step 5: Document the methods used to achieved your audio art in the recipe page <br>
+Step 6: Continue contributing to the recreation of our relationship with tech. <br><br>
