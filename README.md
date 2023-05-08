@@ -15,11 +15,17 @@ Step 4: Listen closely to the repetition, maybe even lose yourself within it. <b
 Step 5: Document the methods used to achieved your audio art in the recipe page <br>
 Step 6: Continue contributing to the recreation of our relationship with tech. 
 
-<br><br>
+<br>
 
 Design Process + References: <br>
 
 My design process began with reading and researching communities that are prevelant within my life. As this tool caters towards indivudals being strung along towards future of advancing technology without consent -- it should be clarified that I am privledged to be able to study technology and (while I'm not a tech giant) I therefore have the capabilities to sway our technological trajectory: something other people within this community may not have the able to do. That being said, I looked to Design Justice Principles, Alice Yuan Zhang, Annie Levin, Community Tech NY and others in order to guide my design process. I decided to use audio as the main medium to migitate technologies' dependency on visual media. Another guiding factor of my design process was researching hypnosis practices a bit, as I believe the conceptual basis of it is interesting to compare to the overall notion of control within digital and technological space -- however, this is ultimately an ongoing/unfinished thought.
+<br><br>
+https://designjustice.org/read-the-principles <br>
+http://peerproduction.net/issues/issue-15-transition/peer-reviewed-papers/prototypes-as-agents-of-transition/<br>
+https://aliceyuanzhang.com/decentralization.html <br>
+https://www.currentaffairs.org/2021/04/dance-dance-socialist-revolution <br>
+https://www.communitytechny.org/
 
 <br><br>
 Some next steps:<br>
