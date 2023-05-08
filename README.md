@@ -8,6 +8,7 @@ How does this tool do that? EnviroHypno asks the users to record short audio cli
 
 How to use it?
 
+https://altrs.github.io/envirohypno/recorder.html
 Step 1: Choose a location you'd like to utalize in this creative process <br>
 Step 2: Record some sounds. It's generally best if there 3-10 secs long. <br>
 Step 3: Press 'MIX' Find somewhere comfortable within that area to relax. <br>
