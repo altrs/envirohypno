@@ -8,6 +8,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
 
     <title>Index</title>
+
+    <style>
+
+    @media (max-width: 800px) {
+      .popup {
+          position: fixed;
+          bottom: 10%;
+          left: 50%;
+          width: 300px;
+          transform: translate(-50%, 0%);
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          font-family: arial;
+          font-size: 12px;
+          display: none;
+      }
+
+      .popup-content {
+          text-align: center;
+      }
+
+      #close-popup {
+          margin-top: 10px;
+      }
+    }
+
+      .popup {
+          position: fixed;
+          bottom: 10%;
+          left: 5%;
+          width: 300px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          font-family: arial;
+          font-size: 12px;
+          display: none;
+      }
+
+      .popup-content {
+          text-align: center;
+      }
+
+      #close-popup {
+          margin-top: 10px;
+      }
+
+    </style>
   </head>
   <body class="recorderBody">
     
@@ -45,13 +94,21 @@
         </div>
 
         <div class="slidecontainer">
-          <input id="myRange" class="slider" type="range" min="1" max="200" step="1" value="50"></input>
+          <input id="myRange" class="slider" type="range" min="1" max="200" step="1" value="50">
         </div>
 
         <audio style="display:none" controls></audio>
         <audio style="display:none" id="audioPlay" controls></audio>
 
-  </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Quick Note</h2>
+            <p>Please ensure you are using Google Chrome to use this tool. In order for full functionality, your web microphone within your phone settings and browser settings must be enabled. *If you are viewing this website within Instagram, please navigate to the site menu and select "Open In Chrome." Or else the button functionality will not be available. Happy Recording :)</p>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
 
     <div class="scroll-container">
       <p class="scroll-text">EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS EXPERIENCE THINGS </p>
@@ -60,6 +117,30 @@
 
 
     <script src="script.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+      const popup = document.getElementById("popup");
+      const closePopupButton = document.getElementById("close-popup");
+
+      // Function to open the popup
+      function openPopup() {
+          popup.style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+          popup.style.display = "none";
+      }
+
+      // Event listener for opening the popup
+      // You can trigger this event in response to user actions, e.g., button click
+      openPopup();
+
+      // Event listener for closing the popup
+      closePopupButton.addEventListener("click", closePopup);
+  });
+
+    </script>
 
   </body>
 </html>
